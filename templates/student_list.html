@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block main %}
+{% load crispy_forms_tags %}
+<div class="row">
+    
+    <div class="col-md-8 offset-3">
+        <a href="{% url 'crud:home_page' %}" class="btn btn-dark btn-sm float-end">Add New</a>
+        <div class="card">
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Father Name</th>
+                        <th scope="col">Mother Name</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for student in students %}
+                      <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td><img src="{{student.image.url}}" width="80" height="50"/></td>
+                        <td>{{student.name}}</td>
+                        <td>{{student.email}}</td>
+                        <td>{{student.phone}}</td>
+                        <td>{{student.father_name}}</td>
+                        <td>{{student.mother_name}}</td>
+                        <td>
+                            <a href="{% url 'crud:edit_student' student.id %}" class="btn btn-success btn-sm">Edit</a>
+                            <a href="{% url 'crud:delete_student' student.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Do you want ti delete this record')">Delete</a>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                      
+                    </tbody>
+                  </table>
+            </div>
+          </div>
+    </div>
+</div>
+
+{% endblock main %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block main %}
+{% load crispy_forms_tags %}
+<div class="row">
+    
+    <div class="col-md-6 offset-3">
+        <a href="{% url 'crud:student_list' %}" class="btn btn-dark btn-sm float-end">Update List</a>
+        <div class="card">
+            <div class="card-body">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                       <div class="form-row">
+                           <div class="form-group">
+                                {{form.name|as_crispy_field}}
+                            </div>
+                       </div>
+
+                       <div class="form-row">
+                        <div class="form-group">
+                             {{form.email|as_crispy_field}}
+                         </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group">
+                             {{form.phone|as_crispy_field}}
+                         </div>
+                      </div>
+
+                      <div class="form-row">
+                        <div class="form-group">
+                             {{form.father_name|as_crispy_field}}
+                         </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                             {{form.mother_name|as_crispy_field}}
+                         </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                             {{form.image|as_crispy_field}}
+                         </div>
+                    </div>
+                    <br/>
+                       
+        
+                        <div class="col-12">
+                          <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                      
+                </form>
+            </div>
+          </div>
+    </div>
+</div>
+
+{% endblock main %}
